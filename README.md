@@ -168,3 +168,10 @@ RUNTEQで学習したRuby on Railsを中心に開発します。
 - 京都限定でも継続して使いたいと思うか
 
 公開後は自分と身近な旅行経験者に使ってもらい、スポットとの出会い、絞り込みの分かりやすさ、情報の有用性、投稿のしやすさを確認し、改善する予定です。
+
+## 画面遷移図
+
+https://www.figma.com/design/S4hEG54hmOTVsWw9XZfsuL/Tabi-Drop-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=55-2231&t=4tkxSdih0z1Vd2Zt-1
+
+## ER図
+https://www.figma.com/design/hIBv26h9Qgq4JoRlZIMQCz/Tabi-Drop-ER%E5%9B%B3?t=cvEv7umnBEhcBiZL-1

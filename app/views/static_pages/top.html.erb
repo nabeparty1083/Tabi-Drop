@@ -1,0 +1,53 @@
+<header class="header">
+  <div class="header-inner">
+    <%= link_to "Tabi Drop", root_path, class: "logo" %>
+
+    <nav class="navigation">
+      <a href="#about">Tabi Dropについて</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">旅の体験から、次の行き先を見つけよう</p>
+      <h1>まだ知らない京都に <br>出会う旅 </h1>
+
+      <p class="hero-description">
+        Tabi Dropは、実際に訪れた人の体験をもとに、<br>
+        季節や同行者、旅の目的に合った観光スポットを探せるサービスです。
+      </p>
+
+      <a href="#about" class="primary-button">Tabi Dropを知る</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="section-inner">
+      <p class="section-label">ABOUT</p>
+      <h2>あなたに合った京都を見つける</h2>
+
+      <div class="feature-list">
+        <article class="feature-card">
+          <h3>条件から探せる</h3>
+          <p>季節や同行者、旅の目的など、自分の旅行に合った条件で探せます。</p>
+        </article>
+
+        <article class="feature-card">
+          <h3>実体験が分かる</h3>
+          <p>訪れた人の良かった点や、事前に知りたかった点を確認できます。</p>
+        </article>
+
+        <article class="feature-card">
+          <h3>新しい京都に出会える</h3>
+          <p>定番だけではない、自分にぴったりの観光スポットを見つけられます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>&copy; <%= Time.current.year %> Tabi Drop</p>
+</footer>

@@ -1,0 +1,27 @@
+ja:
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+      confirmation: "が一致しません"
+      too_short: "は%{count}文字以上で入力してください"
+      taken: "はすでに使用されています"
+      invalid: "は正しくありません"
+      not_saved:
+        one: "1件のエラーにより、ユーザーを登録できませんでした。"
+        other: "%{count}件のエラーにより、ユーザーを登録できませんでした。"
+
+  activerecord:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+
+  devise:
+    failure:
+      already_authenticated: "すでにログインしています。"
+      unauthenticated: "ログインしてください。"
+
+    registrations:
+      signed_up: "アカウント登録が完了しました。"

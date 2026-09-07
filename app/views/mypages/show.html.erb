@@ -1,0 +1,12 @@
+<% content_for :title, "マイページ | Tabi Drop" %>
+
+<main class="mypage">
+  <h1>マイページ</h1>
+
+  <div class="mypage-content">
+    <p>ログイン中のメールアドレス</p>
+    <p><%= current_user.email %></p>
+  </div>
+
+  <%= link_to "トップページへ戻る", root_path %>
+</main>

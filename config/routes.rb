@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "mypage", to: "mypages#show", as: :mypage
+
+
   devise_for :users
   root "static_pages#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

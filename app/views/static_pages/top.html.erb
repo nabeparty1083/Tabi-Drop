@@ -3,7 +3,17 @@
     <%= link_to "Tabi Drop", root_path, class: "logo" %>
 
     <nav class="navigation">
-      <a href="#about">Tabi Dropについて</a>
+     <a href="#about">Tabi Dropについて</a>
+
+     <% if user_signed_in? %>
+      <%= link_to "マイページ", mypage_path %>
+      <%= link_to "ログアウト",
+                destroy_user_session_path,
+                data: { turbo_method: :delete } %>
+     <% else %>
+      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "新規登録", new_user_registration_path %>
+     <% end %>
     </nav>
   </div>
 </header>

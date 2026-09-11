@@ -1,0 +1,15 @@
+kiyomizu:
+  name: 清水寺
+  prefecture: 京都府
+  city: 京都市東山区
+  address: 清水1丁目294
+  official_url: https://www.kiyomizudera.or.jp/
+  category: 0
+
+arashiyama:
+  name: 嵐山竹林の小径
+  prefecture: 京都府
+  city: 京都市右京区
+  address: 嵯峨小倉山田淵山町
+  official_url:
+  category: 0

@@ -3,10 +3,10 @@ require "test_helper"
 class SpotTest < ActiveSupport::TestCase
   setup do
     @spot = Spot.new(
-      name: "清水寺",
+      name: "伏見稲荷大社",
       prefecture: "京都府",
-      city: "京都市東山区",
-      address: "清水1丁目294",
+      city: "京都市伏見区",
+      address: "深草藪之内町68",
       category: :sightseeing
     )
   end

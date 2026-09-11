@@ -1,0 +1,26 @@
+<h1>スポット一覧</h1>
+
+<% if @spots.any? %>
+  <div>
+    <% @spots.each do |spot| %>
+      <article>
+        <h2><%= spot.name %></h2>
+
+        <p>
+          所在地：
+          <%= spot.prefecture %>
+          <%= spot.city %>
+        </p>
+
+        <p>
+          カテゴリー：
+          <%= t("enums.spot.category.#{spot.category}") %>
+        </p>
+
+        <%= link_to "詳細を見る", spot_path(spot) %>
+      </article>
+    <% end %>
+  </div>
+<% else %>
+  <p>登録されているスポットはありません。</p>
+<% end %>

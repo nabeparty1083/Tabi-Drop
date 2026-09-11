@@ -1,0 +1,11 @@
+ja:
+  enums:
+    spot:
+      category:
+        sightseeing: "観光"
+        gourmet: "グルメ"
+        cafe: "カフェ"
+        shopping: "ショッピング"
+        accommodation: "宿泊"
+        activity: "アクティビティ"
+        other: "その他"

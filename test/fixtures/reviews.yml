@@ -1,0 +1,24 @@
+one:
+  user: one
+  spot: kiyomizu
+  rating: 5
+  body: 景色がきれいで楽しめました。
+  good_point: 京都らしい景色を楽しめます。
+  bad_point: 混雑していました。
+  season: 1
+  status: 1
+  purpose: 1
+  companion_type: 1
+  image: sample.jpg
+
+two:
+  user: two
+  spot: arashiyama
+  rating: 4
+  body: 竹林の景色が印象的でした。
+  good_point: 自然を感じられます。
+  bad_point: 時間帯によって混雑します。
+  season: 1
+  status: 1
+  purpose: 1
+  companion_type: 1

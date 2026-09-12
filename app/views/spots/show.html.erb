@@ -26,4 +26,17 @@
   <% end %>
 </dl>
 
+<% if user_signed_in? %>
+  <p>
+    <%= link_to "このスポットの口コミを投稿する",
+                new_spot_review_path(@spot) %>
+  </p>
+<% else %>
+  <p>
+    口コミを投稿するには
+    <%= link_to "ログイン", new_user_session_path %>
+    してください。
+  </p>
+<% end %>
+
 <%= link_to "スポット一覧に戻る", spots_path %>

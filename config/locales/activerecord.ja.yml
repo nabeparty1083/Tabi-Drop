@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      review: "口コミ"
+    attributes:
+      review:
+        rating: "評価"
+        body: "感想"
+        good_point: "良かった点"
+        bad_point: "気になった点"
+        season: "季節"
+        status: "公開状態"
+        purpose: "目的"
+        companion_type: "同行者"
+        image: "画像"
+        user: "投稿者"
+        user_id: "投稿者"
+        spot: "スポット"
+        spot_id: "スポット"
+
+  errors:
+    messages:
+      inclusion: "は1〜5の範囲で選択してください"

@@ -9,3 +9,24 @@ ja:
         accommodation: "宿泊"
         activity: "アクティビティ"
         other: "その他"
+    review:
+      season:
+        spring: "春"
+        summer: "夏"
+        autumn: "秋"
+        winter: "冬"
+      status:
+        published: "公開"
+        hidden: "非公開"
+      purpose:
+        sightseeing: "観光"
+        gourmet: "グルメ"
+        relaxation: "癒やし・リラックス"
+        shopping: "買い物"
+        activity: "アクティビティ"
+      companion_type:
+        solo: "ひとり旅"
+        couple: "カップル"
+        friends: "友人"
+        family: "家族"
+        with_children: "子連れ"

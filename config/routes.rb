@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root "static_pages#top"
-  resources :spots, only: %i[index show]
+  resources :spots, only: %i[index show] do
+   resources :reviews, only: %i[new create]
+end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

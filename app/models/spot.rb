@@ -1,4 +1,6 @@
 class Spot < ApplicationRecord
+  has_many :reviews, dependent: :destroy
+
   enum :category, {
     sightseeing: 0,
     gourmet: 1,

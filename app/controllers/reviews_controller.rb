@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_spot
-  before_action :set_review, only: %i[edit update]
+  before_action :set_review, only: %i[edit update destroy]
 
   def new
     @review = Review.new(user: current_user, spot: @spot)
@@ -28,6 +28,11 @@ class ReviewsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @review.destroy!
+    redirect_to @spot, notice: "口コミを削除しました。"
   end
 
   private

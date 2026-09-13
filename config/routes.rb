@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "static_pages#top"
   resources :spots, only: %i[index show] do
-   resources :reviews, only: %i[new create edit update]
+   resources :reviews, only: %i[new create edit update destroy]
 end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

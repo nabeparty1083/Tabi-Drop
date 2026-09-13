@@ -163,4 +163,27 @@ test "他ユーザーの口コミを更新できない" do
   assert_response :not_found
   assert_equal original_body, @other_review.reload.body
 end
+
+test "自分の口コミを削除できる" do
+  sign_in @user
+
+  assert_difference "Review.count", -1 do
+    delete spot_review_path(@review.spot, @review)
+  end
+
+  assert_redirected_to spot_path(@review.spot)
+  assert_equal "口コミを削除しました。", flash[:notice]
+  assert_not Review.exists?(@review.id)
+end
+
+test "他ユーザーの口コミを削除できない" do
+  sign_in @user
+
+  assert_no_difference "Review.count" do
+    delete spot_review_path(@other_review.spot, @other_review)
+  end
+
+  assert_response :not_found
+  assert Review.exists?(@other_review.id)
+end
 end

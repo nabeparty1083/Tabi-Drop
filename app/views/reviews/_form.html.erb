@@ -1,0 +1,65 @@
+<% if @review.errors.any? %>
+  <div>
+    <h2>入力内容を確認してください</h2>
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: [@spot, @review] do |form| %>
+  <div>
+    <%= form.label :rating, "評価" %>
+    <%= form.select :rating,
+                    (1..5).map { |number| ["★" * number, number] },
+                    { prompt: "評価を選択してください" } %>
+  </div>
+
+  <div>
+    <%= form.label :body, "感想" %>
+    <%= form.text_area :body, rows: 6 %>
+  </div>
+
+  <div>
+    <%= form.label :good_point, "良かった点" %>
+    <%= form.text_area :good_point, rows: 4 %>
+  </div>
+
+  <div>
+    <%= form.label :bad_point, "気になった点" %>
+    <%= form.text_area :bad_point, rows: 4 %>
+  </div>
+
+  <div>
+    <%= form.label :season, "訪れた季節" %>
+    <%= form.select :season,
+                    Review.seasons.keys.map { |key|
+                      [t("enums.review.season.#{key}"), key]
+                    },
+                    { prompt: "季節を選択してください" } %>
+  </div>
+
+  <div>
+    <%= form.label :purpose, "旅行の目的" %>
+    <%= form.select :purpose,
+                    Review.purposes.keys.map { |key|
+                      [t("enums.review.purpose.#{key}"), key]
+                    },
+                    { prompt: "目的を選択してください" } %>
+  </div>
+
+  <div>
+    <%= form.label :companion_type, "一緒に訪れた人" %>
+    <%= form.select :companion_type,
+                    Review.companion_types.keys.map { |key|
+                      [t("enums.review.companion_type.#{key}"), key]
+                    },
+                    { prompt: "同行者を選択してください" } %>
+  </div>
+
+  <div>
+    <%= form.submit submit_label %>
+  </div>
+<% end %>

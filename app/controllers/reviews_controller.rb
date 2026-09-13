@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_spot
+  before_action :set_review, only: %i[edit update]
 
   def new
     @review = Review.new(user: current_user, spot: @spot)
@@ -18,10 +19,28 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @review.update(review_params)
+      redirect_to @spot, notice: "口コミを更新しました。"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_spot
     @spot = Spot.find(params[:spot_id])
+  end
+
+  def set_review
+    @review = current_user.reviews.find_by!(
+      id: params[:id],
+      spot: @spot
+    )
   end
 
   def review_params

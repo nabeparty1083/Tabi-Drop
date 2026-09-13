@@ -28,8 +28,13 @@
 
 <% if user_signed_in? %>
   <p>
-    <%= link_to "このスポットの口コミを投稿する",
-                new_spot_review_path(@spot) %>
+    <% if @current_user_review %>
+      <%= link_to "自分の口コミを編集する",
+                  edit_spot_review_path(@spot, @current_user_review) %>
+    <% else %>
+      <%= link_to "このスポットの口コミを投稿する",
+                  new_spot_review_path(@spot) %>
+    <% end %>
   </p>
 <% else %>
   <p>

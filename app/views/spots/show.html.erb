@@ -27,10 +27,19 @@
 </dl>
 
 <% if user_signed_in? %>
-  <p>
+  <div>
     <% if @current_user_review %>
       <%= link_to "自分の口コミを編集する",
                   edit_spot_review_path(@spot, @current_user_review) %>
+
+    <%= button_to "自分の口コミを削除する",
+                spot_review_path(@spot, @current_user_review),
+                method: :delete,
+                form: {
+                  data: {
+                    turbo_confirm: "本当にこの口コミを削除しますか？"
+                  }
+                } %>
     <% else %>
       <%= link_to "このスポットの口コミを投稿する",
                   new_spot_review_path(@spot) %>
@@ -41,7 +50,7 @@
     口コミを投稿するには
     <%= link_to "ログイン", new_user_session_path %>
     してください。
-  </p>
+  </div>
 <% end %>
 
 <%= link_to "スポット一覧に戻る", spots_path %>

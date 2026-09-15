@@ -1,5 +1,62 @@
 <h1>スポット一覧</h1>
 
+<section>
+  <h2>スポットを検索する</h2>
+
+  <%= form_with url: spots_path, method: :get, local: true do |form| %>
+    <div>
+      <%= form.label :prefecture, "都道府県" %>
+      <%= form.select :prefecture,
+                      options_for_select(@prefectures, params[:prefecture]),
+                      include_blank: "すべて" %>
+    </div>
+
+    <div>
+      <%= form.label :category, "カテゴリー" %>
+      <%= form.select :category,
+                      options_for_select(
+                        Spot.categories.keys.map { |category|
+                          [t("enums.spot.category.#{category}"), category]
+                        },
+                        params[:category]
+                      ),
+                      include_blank: "すべて" %>
+    </div>
+
+    <div>
+      <%= form.label :season, "季節" %>
+      <%= form.select :season,
+                      options_for_select(
+                        Review.seasons.keys.map { |season|
+                          [t("enums.review.season.#{season}"), season]
+                        },
+                        params[:season]
+                      ),
+                      include_blank: "すべて" %>
+    </div>
+
+    <div>
+      <%= form.label :companion_type, "おすすめしたい人" %>
+      <%= form.select :companion_type,
+                      options_for_select(
+                        Review.companion_types.keys.map { |companion_type|
+                          [
+                            t("enums.review.companion_type.#{companion_type}"),
+                            companion_type
+                          ]
+                        },
+                        params[:companion_type]
+                      ),
+                      include_blank: "すべて" %>
+    </div>
+
+    <div>
+      <%= form.submit "検索" %>
+      <%= link_to "検索条件をクリア", spots_path %>
+    </div>
+  <% end %>
+</section>
+
 <% if @spots.any? %>
   <div>
     <% @spots.each do |spot| %>
@@ -21,6 +78,13 @@
       </article>
     <% end %>
   </div>
+<% elsif params.values_at(
+           :prefecture,
+           :category,
+           :season,
+           :companion_type
+         ).any?(&:present?) %>
+  <p>条件に一致するスポットはありません。</p>
 <% else %>
   <p>登録されているスポットはありません。</p>
 <% end %>

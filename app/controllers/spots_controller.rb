@@ -28,7 +28,11 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
-    @current_user_review = @spot.reviews.find_by(user: current_user) if user_signed_in?
+  @spot = Spot.find(params[:id])
+
+  if user_signed_in?
+    @current_user_review = @spot.reviews.find_by(user: current_user)
+    @favorite = current_user.favorites.find_by(spot: @spot)
   end
+end
 end

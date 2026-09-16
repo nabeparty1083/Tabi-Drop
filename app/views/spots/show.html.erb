@@ -28,29 +28,41 @@
 
 <% if user_signed_in? %>
   <div>
+    <% if @favorite %>
+      <%= button_to "★ お気に入りを解除する",
+                    spot_favorite_path(@spot),
+                    method: :delete %>
+    <% else %>
+      <%= button_to "☆ お気に入りに登録する",
+                    spot_favorite_path(@spot),
+                    method: :post %>
+    <% end %>
+  </div>
+
+  <div>
     <% if @current_user_review %>
       <%= link_to "自分の口コミを編集する",
                   edit_spot_review_path(@spot, @current_user_review) %>
 
-    <%= button_to "自分の口コミを削除する",
-                spot_review_path(@spot, @current_user_review),
-                method: :delete,
-                form: {
-                  data: {
-                    turbo_confirm: "本当にこの口コミを削除しますか？"
-                  }
-                } %>
+      <%= button_to "自分の口コミを削除する",
+                    spot_review_path(@spot, @current_user_review),
+                    method: :delete,
+                    form: {
+                      data: {
+                        turbo_confirm: "本当にこの口コミを削除しますか？"
+                      }
+                    } %>
     <% else %>
       <%= link_to "このスポットの口コミを投稿する",
                   new_spot_review_path(@spot) %>
     <% end %>
-  </p>
+  </div>
 <% else %>
   <p>
-    口コミを投稿するには
+    口コミの投稿やお気に入り登録をするには
     <%= link_to "ログイン", new_user_session_path %>
     してください。
-  </div>
+  </p>
 <% end %>
 
 <%= link_to "スポット一覧に戻る", spots_path %>

@@ -40,6 +40,38 @@ class SpotsControllerTest < ActionDispatch::IntegrationTest
     assert_select "button", text: "自分の口コミを削除する", count: 0
   end
 
+  test "お気に入り登録済みの場合は解除ボタンが表示される" do
+  sign_in @user
+
+  get spot_url(@spot)
+
+  assert_response :success
+  assert_select "form[action='#{spot_favorite_path(@spot)}']" do
+    assert_select "input[name='_method'][value='delete']"
+    assert_select "button", text: "★ お気に入りを解除する"
+  end
+end
+
+test "お気に入り未登録の場合は登録ボタンが表示される" do
+  sign_in @user
+  unregistered_spot = spots(:arashiyama)
+
+  get spot_url(unregistered_spot)
+
+  assert_response :success
+  assert_select "form[action='#{spot_favorite_path(unregistered_spot)}']" do
+    assert_select "button", text: "☆ お気に入りに登録する"
+  end
+end
+
+test "未ログインの場合はお気に入りボタンが表示されない" do
+  get spot_url(@spot)
+
+  assert_response :success
+  assert_select "button", text: "★ お気に入りを解除する", count: 0
+  assert_select "button", text: "☆ お気に入りに登録する", count: 0
+end
+
   test "都道府県でスポットを絞り込める" do
     osaka_spot = create_osaka_cafe
 

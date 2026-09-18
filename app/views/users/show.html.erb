@@ -1,0 +1,46 @@
+<% content_for :title, "#{@user.name.presence || 'ユーザー'}のプロフィール | Tabi Drop" %>
+
+<main class="user-profile">
+  <section class="profile">
+    <h1><%= @user.name.presence || "名前未設定" %>さんのプロフィール</h1>
+
+    <dl>
+      <div>
+        <dt>ユーザー名</dt>
+        <dd><%= @user.name.presence || "未設定" %></dd>
+      </div>
+
+      <div>
+        <dt>居住地</dt>
+        <dd><%= @user.residence.presence || "未設定" %></dd>
+      </div>
+
+      <div>
+        <dt>自己紹介</dt>
+        <dd><%= simple_format(@user.bio.presence || "自己紹介はまだありません") %></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="profile-reviews">
+    <h2>投稿した口コミ</h2>
+
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <article class="review">
+          <h3>
+            <%= link_to review.spot.name, spot_path(review.spot) %>
+          </h3>
+
+          <p>評価：<%= "★" * review.rating %><%= "☆" * (5 - review.rating) %></p>
+          <p><%= review.body %></p>
+          <p>投稿日：<%= review.created_at.strftime("%Y年%m月%d日") %></p>
+        </article>
+      <% end %>
+    <% else %>
+      <p>投稿した口コミはまだありません。</p>
+    <% end %>
+  </section>
+
+  <%= link_to "スポット一覧へ戻る", spots_path %>
+</main>

@@ -1,13 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
 one:
   email: one@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  name: 京都旅子
+  residence: 京都府
+  bio: 京都のカフェ巡りが好きです。
 
 two:
   email: two@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  name: 大阪旅男
+  residence: 大阪府
+  bio: 関西のおいしいお店を探しています。

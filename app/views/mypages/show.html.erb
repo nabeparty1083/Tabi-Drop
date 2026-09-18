@@ -6,6 +6,8 @@
   <div class="mypage-content">
     <p>ログイン中のメールアドレス</p>
     <p><%= current_user.email %></p>
+
+    <%= link_to "自分のプロフィールを見る", user_path(current_user) %>
   </div>
 
   <%= link_to "トップページへ戻る", root_path %>

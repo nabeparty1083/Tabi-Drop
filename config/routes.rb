@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "mypage", to: "mypages#show", as: :mypage
 
   devise_for :users
-  resources :users, only: %i[show]
+  resources :users, only: %i[show edit update]
 
   root "static_pages#top"
 

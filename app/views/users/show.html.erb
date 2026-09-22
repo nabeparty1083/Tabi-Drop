@@ -20,6 +20,9 @@
         <dd><%= simple_format(@user.bio.presence || "自己紹介はまだありません") %></dd>
       </div>
     </dl>
+    <% if user_signed_in? && current_user == @user %>
+    <%= link_to "プロフィールを編集する", edit_user_path(@user) %>
+  <% end %>
   </section>
 
   <section class="profile-reviews">

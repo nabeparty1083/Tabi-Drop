@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, length: { maximum: 30 }
+  validates :residence, length: { maximum: 50 }
+  validates :bio, length: { maximum: 500 }
+
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_spots, through: :favorites, source: :spot

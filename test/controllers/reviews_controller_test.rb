@@ -49,6 +49,59 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to spot_path(@spot)
   end
 
+  test "画像付きで口コミを投稿できる" do
+  sign_in @user
+  uploaded_image = fixture_file_upload(
+    Rails.root.join("public/icon.png"),
+    "image/png"
+  )
+
+  assert_difference "Review.count", 1 do
+    post spot_reviews_path(@spot), params: {
+      review: {
+        rating: 5,
+        body: "画像付きの口コミです。",
+        season: "spring",
+        purpose: "sightseeing",
+        companion_type: "couple",
+        image: uploaded_image
+      }
+    }
+  end
+
+  review = Review.find_by(user: @user, spot: @spot)
+
+  assert_predicate review, :image?
+  assert_equal "icon.png", review.image.identifier
+  assert_redirected_to spot_path(@spot)
+ensure
+  review&.remove_image!
+end
+
+  test "画像以外のファイルでは口コミを投稿できない" do
+    sign_in @user
+    invalid_file = fixture_file_upload(
+      Rails.root.join("Gemfile"),
+      "text/plain"
+   )
+
+    assert_no_difference "Review.count" do
+      post spot_reviews_path(@spot), params: {
+        review: {
+          rating: 5,
+          body: "不正なファイルを添付した口コミです。",
+          season: "spring",
+          purpose: "sightseeing",
+          companion_type: "couple",
+          image: invalid_file
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+    assert_select "h2", text: "入力内容を確認してください"
+  end
+
   test "入力に不備がある場合は口コミを投稿できない" do
     sign_in @user
 

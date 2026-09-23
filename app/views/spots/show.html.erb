@@ -65,4 +65,63 @@
   </p>
 <% end %>
 
+<section>
+  <h2>口コミ一覧</h2>
+
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+      <article>
+        <h3>
+          <%= link_to review.user.name.presence || "名前未設定",
+                      user_path(review.user) %>
+          さんの口コミ
+        </h3>
+
+        <p>評価：<%= "★" * review.rating %></p>
+
+        <% if review.image? %>
+          <div>
+            <%= image_tag review.image.url,
+                          alt: "#{@spot.name}の口コミ画像",
+                          style: "max-width: 100%; height: auto;" %>
+          </div>
+        <% end %>
+
+        <p><%= review.body %></p>
+
+        <% if review.good_point.present? %>
+          <p>
+            <strong>良かった点：</strong>
+            <%= review.good_point %>
+          </p>
+        <% end %>
+
+        <% if review.bad_point.present? %>
+          <p>
+            <strong>気になった点：</strong>
+            <%= review.bad_point %>
+          </p>
+        <% end %>
+
+        <dl>
+          <dt>訪れた季節</dt>
+          <dd><%= t("enums.review.season.#{review.season}") %></dd>
+
+          <dt>旅行の目的</dt>
+          <dd><%= t("enums.review.purpose.#{review.purpose}") %></dd>
+
+          <dt>一緒に訪れた人</dt>
+          <dd>
+            <%= t("enums.review.companion_type.#{review.companion_type}") %>
+          </dd>
+        </dl>
+
+        <p>投稿日：<%= review.created_at.strftime("%Y/%m/%d") %></p>
+      </article>
+    <% end %>
+  <% else %>
+    <p>まだ口コミはありません。</p>
+  <% end %>
+</section>
+
 <%= link_to "スポット一覧に戻る", spots_path %>

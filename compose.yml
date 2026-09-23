@@ -18,6 +18,7 @@ services:
       DATABASE_HOST: db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: password
+      CLOUDINARY_URL: ${CLOUDINARY_URL}
     depends_on:
       - db
 

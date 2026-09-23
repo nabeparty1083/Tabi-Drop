@@ -29,6 +29,7 @@ class SpotsController < ApplicationController
 
   def show
   @spot = Spot.find(params[:id])
+  @reviews = @spot.reviews.published.includes(:user).order(created_at: :desc)
 
   if user_signed_in?
     @current_user_review = @spot.reviews.find_by(user: current_user)

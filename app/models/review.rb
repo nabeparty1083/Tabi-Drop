@@ -2,6 +2,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :spot
 
+  mount_uploader :image, ReviewImageUploader
+
   enum :season, {
     spring: 0,
     summer: 1,

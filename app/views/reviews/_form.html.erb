@@ -60,6 +60,12 @@
   </div>
 
   <div>
+    <%= form.label :image, "画像" %>
+    <%= form.file_field :image, accept: "image/jpeg,image/png,image/webp" %>
+    <p>JPEG・PNG・WebP形式、5MB以下の画像を選択できます。</p>
+  </div>
+
+  <div>
     <%= form.submit submit_label %>
   </div>
 <% end %>

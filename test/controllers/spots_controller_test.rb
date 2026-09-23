@@ -22,6 +22,22 @@ class SpotsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1", text: @spot.name
   end
 
+  test "投稿された口コミ画像をスポット詳細に表示する" do
+    uploaded_image = fixture_file_upload(
+      Rails.root.join("public/icon.png"),
+      "image/png"
+    )
+    @review.update!(image: uploaded_image, status: :published)
+
+    get spot_url(@review.spot)
+
+    assert_response :success
+    assert_select "img[src='#{@review.image.url}']"
+    assert_select "img[alt='#{@review.spot.name}の口コミ画像']"
+  ensure
+    @review&.remove_image!
+  end
+
   test "自分の口コミがある場合は削除ボタンが表示される" do
     sign_in @user
     get spot_url(@review.spot)

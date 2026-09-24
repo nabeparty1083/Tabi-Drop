@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title><%= content_for(:title) || "App" %></title>
@@ -6,26 +7,38 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-   <% if notice.present? %>
-     <p class="notice"><%= notice %></p>
-   <% end %>
+    <header>
+      <nav aria-label="メインナビゲーション">
+        <%= link_to "トップ", root_path %>
+        <%= link_to "スポット一覧", spots_path %>
 
-   <% if alert.present? %>
-     <p class="alert"><%= alert %></p>
-   <% end %>
+        <% if user_signed_in? %>
+          <%= link_to "マイページ", mypage_path %>
+          <%= link_to "お気に入り一覧", favorites_path %>
+        <% end %>
+      </nav>
+    </header>
 
-   <%= yield %>
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
   </body>
 </html>

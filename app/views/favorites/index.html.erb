@@ -1,0 +1,36 @@
+<h1>お気に入り一覧</h1>
+
+<% if @favorites.any? %>
+  <div>
+    <% @favorites.each do |favorite| %>
+      <% spot = favorite.spot %>
+
+      <article>
+        <h2><%= spot.name %></h2>
+
+        <p>
+          所在地：
+          <%= spot.prefecture %>
+          <%= spot.city %>
+        </p>
+
+        <p>
+          カテゴリー：
+          <%= t("enums.spot.category.#{spot.category}") %>
+        </p>
+
+        <%= link_to "詳細を見る", spot_path(spot) %>
+
+        <%= button_to "お気に入りを解除",
+                      spot_favorite_path(spot),
+                      method: :delete,
+                      data: {
+                        turbo_confirm: "お気に入りを解除しますか？"
+                      } %>
+      </article>
+    <% end %>
+  </div>
+<% else %>
+  <p>お気に入りに登録したスポットはありません。</p>
+  <%= link_to "スポットを探す", spots_path %>
+<% end %>

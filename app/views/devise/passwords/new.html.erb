@@ -1,15 +1,25 @@
-<h2>Forgot your password?</h2>
+<h2>パスワードの再設定</h2>
+
+<p>
+  ご登録のメールアドレスを入力してください。<br>
+  パスワード再設定用のリンクをメールでお送りします。
+</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+    <p><%= f.label :email, "メールアドレス" %></p>
+    <p>
+      <%= f.email_field :email,
+                        autofocus: true,
+                        autocomplete: "email",
+                        required: true %>
+    </p>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
+    <%= f.submit "パスワード再設定メールを送信" %>
   </div>
 <% end %>
 

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+    if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    end
+
   get "mypage", to: "mypages#show", as: :mypage
 
   devise_for :users

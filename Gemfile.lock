@@ -126,6 +126,11 @@ GEM
     drb (2.2.3)
     erb (6.0.7)
     erubi (1.13.1)
+    factory_bot (6.6.0)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.1)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
     faraday (2.14.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -368,6 +373,7 @@ DEPENDENCIES
   cloudinary
   debug
   devise (~> 5.0)
+  factory_bot_rails
   importmap-rails
   jbuilder
   letter_opener_web

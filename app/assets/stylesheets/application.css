@@ -239,3 +239,11 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.review-image {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 8px;
+}

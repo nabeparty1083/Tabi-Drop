@@ -64,4 +64,60 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     get mypage_path
     assert_redirected_to new_user_session_path
   end
+  test "登録済みメールアドレスの存在をエラーメッセージから推測できない" do
+   create(:user, email: "existing@example.com")
+
+    assert_no_difference("User.count") do
+      post user_registration_path, params: {
+        user: {
+          email: "existing@example.com",
+          password: "password123",
+          password_confirmation: "password123"
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+    assert_includes response.body, "入力内容をご確認ください"
+    assert_not_includes response.body, "すでに使用されています"
+  end
+    test "パスワード再設定ではメールアドレスの登録状況を判別できない" do
+    user = create(:user)
+
+    post user_password_path, params: {
+      user: { email: "not_registered@example.com" }
+    }
+    unregistered_message = flash[:notice]
+
+    post user_password_path, params: {
+      user: { email: user.email }
+    }
+    registered_message = flash[:notice]
+
+    assert_response :redirect
+    assert_equal registered_message, unregistered_message
+  end
+
+  test "ログイン失敗時はメールアドレスの登録状況を判別できない" do
+    user = create(:user)
+
+    post user_session_path, params: {
+      user: {
+        email: user.email,
+        password: "wrong_password"
+      }
+    }
+    registered_message = flash[:alert]
+
+    post user_session_path, params: {
+      user: {
+        email: "not_registered@example.com",
+        password: "wrong_password"
+      }
+    }
+    unregistered_message = flash[:alert]
+
+    assert_response :unprocessable_entity
+    assert_equal registered_message, unregistered_message
+  end
 end

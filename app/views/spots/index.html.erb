@@ -36,7 +36,7 @@
     </div>
 
     <div>
-      <%= form.label :companion_type, "おすすめしたい人" %>
+      <%= form.label :companion_type, "同行者" %>
       <%= form.select :companion_type,
                       options_for_select(
                         Review.companion_types.keys.map { |companion_type|
@@ -74,7 +74,12 @@
           <%= t("enums.spot.category.#{spot.category}") %>
         </p>
 
-        <%= link_to "詳細を見る", spot_path(spot) %>
+        <%= link_to "詳細を見る",
+            spot_path(
+              spot,
+              season: params[:season],
+              companion_type: params[:companion_type]
+            ) %>
       </article>
     <% end %>
   </div>

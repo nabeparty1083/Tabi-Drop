@@ -31,6 +31,8 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :unprocessable_entity
+    assert_includes response.body, "処理を完了できませんでした"
+    assert_includes response.body, "入力内容をご確認ください"
   end
 
   test "正しいメールアドレスとパスワードでログインできる" do

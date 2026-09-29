@@ -1,6 +1,7 @@
 ja:
   activerecord:
     models:
+      user: "ユーザー"
       review: "口コミ"
     attributes:
       review:

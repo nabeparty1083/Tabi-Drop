@@ -1,15 +1,30 @@
 <% if resource.errors.any? %>
+  <% email_taken = controller_name == "registrations" &&
+                   resource.errors.of_kind?(:email, :taken) %>
+
   <div id="error_explanation" data-turbo-temporary>
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+    <% if email_taken %>
+      <h2>処理を完了できませんでした</h2>
+      <ul>
+        <li>入力内容をご確認ください</li>
+
+        <% resource.errors.each do |error| %>
+          <% unless error.attribute == :email && error.type == :taken %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <h2>
+        <%= I18n.t("errors.messages.not_saved",
+                   count: resource.errors.count,
+                   resource: resource.class.model_name.human.downcase) %>
+      </h2>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 <% end %>

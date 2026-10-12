@@ -13,4 +13,11 @@ RSpec.describe Review, type: :model do
     expect(review).not_to be_valid
     expect(review.errors[:body]).to be_present
   end
+
+  it "評価が6なら無効である" do
+    review = build(:review, rating: 6)
+
+    expect(review).not_to be_valid
+    expect(review.errors[:rating]).to be_present
+  end
 end

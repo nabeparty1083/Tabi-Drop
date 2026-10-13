@@ -247,3 +247,14 @@ body {
   object-fit: cover;
   border-radius: 8px;
 }
+/* ログイン画面 */
+.login-container {
+  max-width: 420px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+}

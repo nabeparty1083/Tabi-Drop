@@ -261,3 +261,59 @@ body {
 .login-container .actions {
   margin-top: 16px;
 }
+/* 共通フッター */
+.site-footer {
+  margin-top: 48px;
+  padding: 28px 20px;
+  color: #ffffff;
+  background-color: var(--main-dark-color);
+  text-align: center;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+
+.site-footer a {
+  display: inline-block;
+  padding: 10px 0;
+  color: #ffffff;
+  text-underline-offset: 4px;
+}
+
+.site-footer a:hover {
+  text-decoration: none;
+}
+
+.site-footer p {
+  margin: 12px 0 0;
+}
+
+/* 利用規約・プライバシーポリシー */
+.legal-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: var(--card-color);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.legal-page h1 {
+  color: var(--main-dark-color);
+  font-size: 26px;
+}
+
+.legal-page h2 {
+  margin-top: 32px;
+  color: var(--main-dark-color);
+  font-size: 20px;
+}
+
+.legal-page ul,
+.legal-page ol {
+  padding-left: 24px;
+}

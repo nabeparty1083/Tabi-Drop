@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   root "static_pages#top"
 
+  get "terms", to: "static_pages#terms"
+  get "privacy", to: "static_pages#privacy"
+
   resources :spots, only: %i[index show] do
     resources :reviews, only: %i[new create edit update destroy]
     resource :favorite, only: %i[create destroy]

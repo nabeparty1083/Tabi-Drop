@@ -37,6 +37,8 @@ gem "bootsnap", require: false
 gem "carrierwave", "~> 3.1"
 gem "cloudinary"
 gem "ruby-vips", "~> 2.0"
+gem "sentry-ruby"
+gem "sentry-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

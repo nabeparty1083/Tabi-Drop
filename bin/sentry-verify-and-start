@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+bin/rails db:prepare
+
+if ! bin/rails runner script/sentry_verify.rb; then
+  echo "Sentry verification failed; starting Rails anyway." >&2
+fi
+
+exec bin/rails server -b 0.0.0.0

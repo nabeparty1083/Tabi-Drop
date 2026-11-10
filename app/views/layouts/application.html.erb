@@ -5,6 +5,11 @@
     <title><%= content_for(:title) || "App" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta property="og:title" content="Tabi Drop">
+    <meta property="og:description" content="季節や同行者に合わせて、口コミから京都の観光スポットを探せるサービスです。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= root_url %>">
+    <meta property="og:image" content="<%= image_url('/ogp.png') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>

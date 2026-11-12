@@ -1,9 +1,10 @@
+<main class="spots-index">
 <h1>スポット一覧</h1>
 
 <section>
   <h2>スポットを検索する</h2>
 
-  <%= form_with url: spots_path, method: :get, local: true do |form| %>
+  <%= form_with url: spots_path, method: :get, local: true, class: "spots-search-form" do |form| %>
     <div>
       <%= form.label :prefecture, "都道府県" %>
       <%= form.select :prefecture,
@@ -93,3 +94,4 @@
 <% else %>
   <p>登録されているスポットはありません。</p>
 <% end %>
+</main>

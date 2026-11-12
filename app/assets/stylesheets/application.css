@@ -199,20 +199,34 @@ body {
 
 /* スマートフォン表示 */
 
+  .spots-index {
+  padding-inline: 32px;
+  }
+
 @media (max-width: 768px) {
   .header-inner {
-    height: 64px;
-    padding: 0 20px;
+    height: auto;
+    padding: 12px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 
   .logo {
     font-size: 22px;
   }
 
-  .navigation a {
-    font-size: 12px;
+  .navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
   }
 
+  .navigation a {
+    padding: 6px 0;
+    font-size: 12px;
+    white-space: nowrap;
+  }
   .hero {
     min-height: 560px;
     padding: 72px 24px;
@@ -238,7 +252,32 @@ body {
   .feature-list {
     grid-template-columns: 1fr;
   }
+  .spots-index {
+    padding-inline: 16px;
+  }
+
+  .spots-search-form {
+    display: grid;
+    gap: 12px;
+  }
+
+  .spots-search-form label {
+    display: block;
+  }
+
+  .spots-search-form select {
+    width: 100%;
+  }
+
+  .spots-search-form select,
+  .spots-search-form input[type="submit"] {
+    min-height: 44px;
+    padding-inline: 12px;
+    font-size: 16px;
+  }
+
 }
+
 .review-image {
   display: block;
   width: 100%;

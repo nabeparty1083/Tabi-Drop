@@ -356,3 +356,52 @@ body {
 .legal-page ol {
   padding-left: 24px;
 }
+
+/* 詳細画面・フォームの余白 */
+.content-page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 32px auto;
+  padding-inline: 20px;
+  overflow-wrap: anywhere;
+}
+
+.form-page {
+  max-width: 600px;
+}
+
+.form-page input[type="email"],
+.form-page input[type="password"],
+.form-page input[type="text"],
+.form-page textarea,
+.form-page select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.form-page input[type="submit"] {
+  min-height: 44px;
+  padding: 8px 20px;
+  font: inherit;
+}
+
+/* 共通ナビゲーションの余白 */
+body > header > nav {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 20px;
+}
+
+/* スマホのトップ見出し */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+}

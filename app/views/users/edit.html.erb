@@ -15,18 +15,18 @@
 
 <%= form_with model: @user do |form| %>
   <div>
-    <%= form.label :name, "ユーザー名" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, "ユーザー名（任意・30文字以内）" %>
+    <%= form.text_field :name, maxlength: 30 %>
   </div>
 
   <div>
-    <%= form.label :residence, "居住地" %>
-    <%= form.text_field :residence %>
+    <%= form.label :residence, "居住地（任意・50文字以内）" %>
+    <%= form.text_field :residence, maxlength: 50 %>
   </div>
 
   <div>
-    <%= form.label :bio, "自己紹介" %>
-    <%= form.text_area :bio %>
+    <%= form.label :bio, "自己紹介（任意・500文字以内）" %>
+    <%= form.text_area :bio, rows: 6, maxlength: 500 %>
   </div>
 
   <div>

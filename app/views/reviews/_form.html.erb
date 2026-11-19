@@ -11,29 +11,29 @@
 
 <%= form_with model: [@spot, @review] do |form| %>
   <div>
-    <%= form.label :rating, "評価" %>
+    <%= form.label :rating, "評価 (必須)" %>
     <%= form.select :rating,
                     (1..5).map { |number| ["★" * number, number] },
                     { prompt: "評価を選択してください" } %>
   </div>
 
   <div>
-    <%= form.label :body, "感想" %>
+    <%= form.label :body, "感想 (必須)" %>
     <%= form.text_area :body, rows: 6 %>
   </div>
 
   <div>
-    <%= form.label :good_point, "良かった点" %>
+    <%= form.label :good_point, "良かった点 (任意)" %>
     <%= form.text_area :good_point, rows: 4 %>
   </div>
 
   <div>
-    <%= form.label :bad_point, "気になった点" %>
+    <%= form.label :bad_point, "気になった点 (任意)" %>
     <%= form.text_area :bad_point, rows: 4 %>
   </div>
 
   <div>
-    <%= form.label :season, "訪れた季節" %>
+    <%= form.label :season, "訪れた季節 (必須)" %>
     <%= form.select :season,
                     Review.seasons.keys.map { |key|
                       [t("enums.review.season.#{key}"), key]
@@ -42,7 +42,7 @@
   </div>
 
   <div>
-    <%= form.label :purpose, "旅行の目的" %>
+    <%= form.label :purpose, "旅行の目的 (必須)" %>
     <%= form.select :purpose,
                     Review.purposes.keys.map { |key|
                       [t("enums.review.purpose.#{key}"), key]
@@ -51,7 +51,7 @@
   </div>
 
   <div>
-    <%= form.label :companion_type, "一緒に訪れた人" %>
+    <%= form.label :companion_type, "一緒に訪れた人 (必須)" %>
     <%= form.select :companion_type,
                     Review.companion_types.keys.map { |key|
                       [t("enums.review.companion_type.#{key}"), key]
@@ -60,7 +60,7 @@
   </div>
 
   <div>
-    <%= form.label :image, "画像" %>
+    <%= form.label :image, "画像 （任意）" %>
     <%= form.file_field :image, accept: "image/jpeg,image/png,image/webp" %>
     <p>JPEG・PNG・WebP形式、5MB以下の画像を選択できます。</p>
   </div>

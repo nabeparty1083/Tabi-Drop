@@ -3,6 +3,10 @@ set -eu
 
 bin/rails db:prepare
 
+if [ "${RUN_SEEDS_ON_START:-0}" = "1" ]; then
+  bin/rails db:seed
+fi
+
 if [ "${SENTRY_VERIFY_ON_START:-0}" = "1" ]; then
   if ! bin/rails runner script/sentry_verify.rb; then
     echo "Sentry verification failed; starting Rails anyway." >&2
